@@ -6,3 +6,7 @@ from django.shortcuts import render
 def wolf(request):
 # 渲染页面并呈现给用户
     return render(request,'wolf.html')
+
+
+def welcome(request):
+	return render(request,'welcome.html')
