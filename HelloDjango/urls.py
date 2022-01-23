@@ -13,16 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url
 from django.contrib import admin
+from django.urls import path, include, re_path
+from django.views.static import serve
 
-
-from MyApp import views
-from MyApp.admin import mysite
+from HelloDjango import settings
 
 urlpatterns = [
-    url(r'^admin/', mysite.urls),
-    # http://127.0.0.1:8000/请求交由HelloDjango下的views中的index函数处理
-    url(r'^wolf', views.wolf),
-    url(r'^welcome', views.welcome),
+    path('admin/', admin.site.urls),
+    path('', include('MyApp.urls')),
+    re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATICFILES_DIRS}),
+    # path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]

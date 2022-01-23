@@ -132,3 +132,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # 收集静态文件时打开，然后关闭STATICFILES_DIRS
